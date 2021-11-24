@@ -13,18 +13,45 @@
 </head>
 <body>
     <div class="container">
-    <h4 class="display-3 text-center">Créer</h4><hr><br>
-    <form action="php/create.php">
+    <form action="php/create.php" method="post">
+        <h4 class="display-3 text-center">Créer</h4><hr><br>
+        
+        <!--ERROR ALERT-->
+        <?php if(isset($_GET['error'])){?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $_GET['error']; ?>
+            </div>
+        <?php } ?>
+
         <div class="form-group">
             <label for="prenom">Prénom</label>
-            <input type="name" class="form-control" id="prenom" placeholder="Entrez le prénom">
+            <input 
+                name="name" 
+                type="name" 
+                class="form-control" 
+                id="prenom" 
+                value="<?php if(isset($_GET['name']))
+                                echo ($_GET['name']); ?>"
+                placeholder="Entrez le prénom">
         </div>
+        
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Entrez l'email">
+            <input 
+                name="email" 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                value="<?php if(isset($_GET['email']))
+                                echo ($_GET['email']); ?>"
+                placeholder="Entrez l'email">
         </div>
      
-        <button type="submit" id="envoyer" class="btn btn-primary">Envoyer</button>
+        <button 
+            name="create"
+            type="submit" 
+            id="envoyer" 
+            class="btn btn-primary">Créer</button>
     </form>
     </div>
 </body>
