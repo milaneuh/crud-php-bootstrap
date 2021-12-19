@@ -2,14 +2,6 @@
     include "config.php";
 
     if(isset($_POST['create'])){
-        //Protection contre les injections SQL
-        function validate($data){
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-
         //On récupère les données
         $name = validate($_POST['name']);
         $email = validate($_POST['email']);

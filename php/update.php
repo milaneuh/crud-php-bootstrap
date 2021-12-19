@@ -1,13 +1,6 @@
 <?php 
 include "config.php";
 
-function validate($data){
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
 if (isset($_GET['id'])) {
 	
 	$id = validate($_GET['id']);
@@ -41,7 +34,7 @@ if (isset($_GET['id'])) {
         $sql->execute(array($name,(string)$email,(int)$id));
         $count = $sql->rowCount();
        if ($count > 0) {
-       	  header("Location: ../read.php?success=L'étudiant à été modifié");
+       	  header("Location: ../read.php?success=L'étudiant a été modifié");
        }else {
           header("Location: ../update.php?id=$id&error=Erreur de connexion avec la base de données&$user_data");
        }
