@@ -21,7 +21,9 @@
 .box{
     width: 750px;
 }
-
+.alert-success{
+    text-align: center;
+}
 .container table{
     padding: 20px;
     border-radius: 15px;

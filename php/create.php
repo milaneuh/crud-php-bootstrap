@@ -21,12 +21,24 @@
             header("Location: ../index.php?error=Veuillez entrer un email&$user_data");
         }else{
             try{
+                //On vérifie que il n'existe pas déjà un utilisateur possédant le même email
                 //Préparation de la requête
-                $sql = $pdo->prepare("INSERT INTO users(name,email) VALUES(?,?)");
+                $sql = $pdo->prepare("SELECT * FROM users WHERE email = ?");
                 //Éxecution de la requête
-                $sql->execute(array($name,$email));
+                $sql->execute(array($email));
+                //Vérification de la présence de l'utilisateur
+                $count = $sql->rowCount();
+                if($count > 0){
+                    header("Location: ../index.php?error=Cet email est déjà utilisé!&$user_data");   
+                }else{
+                    //Préparation de la requête
+                    $sql = $pdo->prepare("INSERT INTO users(name,email) VALUES(?,?)");
+                    //Éxecution de la requête
+                    $sql->execute(array($name,$email));
 
-                header("Location: ../read.php?success=La création de l'étudiant est un succés");
+                    header("Location: ../read.php?success=La création de l'étudiant est un succés");
+                }
+                
             }catch(PDOException $exception){
                 header("Location: ../index.php?error=Une érreur inconnue s'est produite&$user_data");
             }

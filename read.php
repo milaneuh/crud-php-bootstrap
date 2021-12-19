@@ -11,7 +11,7 @@
 
     <!--Feuille de style en cascade-->
     <link rel="stylesheet" href="style/index.css"/>
-    <title>Créer</title>
+    <title>Lire</title>
 </head>
 <body>
     <div class="container">
@@ -20,7 +20,7 @@
             
             <!--SUCCESS ALERT-->
             <?php if(isset($_GET['success'])){?>
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-success text-center" role="alert">
                 <?php echo $_GET['success']; ?>
             </div>
             <?php } ?>
@@ -31,6 +31,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Email</th>
+                <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                 <th scope="row"><?=$count?></th>
                 <td><?php echo $data['name'] ?></td>
                 <td><?php echo $data['email']?></td>
+                <td><a href="update.php?id=<?php echo $data['id']?>" class="btn btn-success">Modifier</a></td>
                 </tr>
                 <tr>
                 <?php } ?>

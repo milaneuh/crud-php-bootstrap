@@ -1,3 +1,4 @@
+<?php include"php/update.php"; ?>
 <!DOCTYPE html>
 <html lang=fr">
 <head>
@@ -10,12 +11,12 @@
 
     <!--Feuille de style en cascade-->
     <link rel="stylesheet" href="style/index.css"/>
-    <title>Créer</title>
+    <title>Modifier</title>
 </head>
 <body>
     <div class="container">
-    <form action="php/create.php" method="post">
-        <h4 class="display-3 text-center">Créer</h4><hr><br>
+    <form action="php/update.php" method="post">
+        <h4 class="display-3 text-center">Modifier</h4><hr><br>
         
         <!--ERROR ALERT-->
         <?php if(isset($_GET['error'])){?>
@@ -31,9 +32,12 @@
                 type="name" 
                 class="form-control" 
                 id="prenom" 
-                value="<?php if(isset($_GET['name']))
-                                echo ($_GET['name']); ?>"
-                placeholder="Entrez le prénom">
+                value="<?php echo $data['name'] ?>">
+            <input
+                name="id"
+                type="text"
+                value="<?php echo $data['id'] ?>"
+                hidden >
         </div>
         
         <div class="form-group">
@@ -43,16 +47,14 @@
                 type="email" 
                 class="form-control" 
                 id="email" 
-                value="<?php if(isset($_GET['email']))
-                                echo ($_GET['email']); ?>"
-                placeholder="Entrez l'email">
+                value="<?php echo $data['email'] ?>">
         </div>
      
         <button 
-            name="create"
+            name="update"
             type="submit" 
             id="envoyer" 
-            class="btn btn-primary">Créer</button>
+            class="btn btn-primary">Modifier</button>
         <a href="read.php" class="link-primary">Lire</a>
     </form>
     </div>
