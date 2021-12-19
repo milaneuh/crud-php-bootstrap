@@ -26,7 +26,7 @@
                 //Éxecution de la requête
                 $sql->execute(array($name,$email));
 
-                echo "sucess";
+                header("Location: ../read.php?success=La création de l'étudiant est un succés");
             }catch(PDOException $exception){
                 header("Location: ../index.php?error=Une érreur inconnue s'est produite&$user_data");
             }
