@@ -5,7 +5,7 @@
         $id = validate($_GET['id']);
 
         $sql = $pdo->prepare("DELETE FROM users
-                              WHERE id= ? ");
+                              WHERE user_id= ? ");
         $sql->execute(array((int)$id));
         $count = $sql->rowCount();
        if ($count > 0) {

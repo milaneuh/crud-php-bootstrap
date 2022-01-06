@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
 	
 	$id = validate($_GET['id']);
 
-	$sql = $pdo->prepare("SELECT * FROM users WHERE id=?");
+	$sql = $pdo->prepare("SELECT * FROM users WHERE user_id=?");
     $sql->execute(array($id));
     $count = $sql->rowCount();
 
@@ -30,13 +30,13 @@ if (isset($_GET['id'])) {
 
         $sql = $pdo->prepare("UPDATE users
                SET name=?, email=?
-               WHERE id=? ");
+               WHERE user_id=? ");
         $sql->execute(array($name,(string)$email,(int)$id));
         $count = $sql->rowCount();
        if ($count > 0) {
        	  header("Location: ../read.php?success=L'étudiant a été modifié");
        }else {
-          header("Location: ../update.php?id=$id&error=Erreur de connexion avec la base de données&$user_data");
+          header("Location: ../update.php?id=$id&error=Vous n'avez modifié aucune informations. Vous pouvez quitter cette page sans modifier en cliquant sur le bouton LIRE &$user_data");
        }
 	}
 }else {

@@ -36,7 +36,7 @@
             <input
                 name="id"
                 type="text"
-                value="<?php echo $data['id'] ?>"
+                value="<?php echo $data['user_id'] ?>"
                 hidden >
         </div>
         

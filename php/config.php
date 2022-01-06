@@ -1,14 +1,14 @@
 <?php
   // Création du DSN
-  $dsn = 'mysql:host=localhost;dbname=crud-php;port=3306;charset=utf8';
+  $dsn = 'mysql:host=localhost;dbname=crud;port=3306;charset=utf8';
   
   // Création et test de la connexion
   
   try {
-      $pdo = new PDO($dsn,'root','');
+    $pdo = new PDO($dsn,'root','');
   }
   catch (PDOException $exception) {
-    echo "La connection à la base de données a échouée";
+    echo $exception->getMessage();
   } 
 
   
